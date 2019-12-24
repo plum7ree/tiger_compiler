@@ -1,0 +1,71 @@
+<tiger-program> → main let <declaration-segment> in begin <stat-seq> end
+
+<declaration-segment> → <type-declaration-list> <var-declaration-list> <function-declaration-list>
+
+<type-declaration-list> → NULL
+<type-declaration-list> → <type-declaration> <type-declaration-list>
+
+<var-declaration-list> → NULL
+<var-declaration-list> → <var-declaration> <var-declaration-list>
+
+<function-declaration-list> → NULL
+<function-declaration-list> → <function-declaration> <function-declaration-list>
+
+<type-declaration> → type id = <type>;
+<type> → <type-id>
+<type> → array [INTLIT] of <type-id>
+<type> → id
+<type-id> → int | float
+
+<var-declaration> → var <id-list>: <type> <optional-init>;
+<id-list> → id
+<id-list> → id, <id-list>
+<optional-init> → NULL
+<optional-init> → := <const>
+
+<function-declaration> → function id (<param-list>) <type> begin <stat-seq> end;
+<param-list> → NULL
+<param-list> → <param> <param-list-tail>
+<param-list-tail> → NULL
+<param-list-tail> → , <param> <param-list-tail>
+<param> → id : <type>
+
+<stat-seq> → <stat>
+<stat-seq> → <stat> <stat-seq>
+
+<stat> → <lvalue> := <expr>;
+<stat> → id := id(<expr-list>);
+<stat> → if <expr> then <stat-seq> <else-seq> endif;
+<else-seq> → else <stat-seq>
+<else-seq> → NULL
+<stat> → while <expr> do <stat-seq> enddo;
+<stat> → for id := <expr> to <expr> do <stat-seq> enddo;
+<stat> → break;
+<stat> → return <expr>;
+<stat> → let <declaration-segment> in <stat-seq> end;
+
+<expr> → <and-result> { '|' <and-result> }
+<and-result> → <leq-result> { '&' <leq-result> }
+<leq-result> → <geq-result> { '<=' <geq-result> }
+<geq-result> → <lt-result> { '>=' <lt-result> }
+<lt-result> → <gt-result> { '<' <gt-result> }
+<gt-result> → <neq-result> { '>' <neq-result> }
+<neq-result> → <eq-result> { '!=' <eq-result> }
+<eq-result> → <difference> { '==' <difference> }
+<difference> → <sum> { '-' <sum> }
+<sum> → <quotient> { '+' <quotient> }
+<quotient> → <product> { '/' <product> }
+<product> → <power> { '*' <power> }
+<power> → <atom> { '**' <atom> }
+
+<atom> → <const> | <lvalue> | (<expr>)
+<const> → INTLIT
+<const> → FLOATLIT
+
+<expr-list> → NULL
+<expr-list> → <expr> <expr-list-tail>
+<expr-list-tail> → , <expr> <expr-list-tail>
+<expr-list-tail> → NULL
+<lvalue> → id <lvalue-tail>
+<lvalue-tail> → [ <expr> ]
+<lvalue-tail> → NULL

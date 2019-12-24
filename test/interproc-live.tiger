@@ -1,0 +1,22 @@
+main let
+  var a, b : int := 5;
+  var temp : int;
+
+  function f1(): int
+  begin
+    temp := printi(a + b);
+    return 0;
+  end;
+
+  function f2(): int
+  begin
+    temp := f1();
+    return 0;
+  end;
+
+in
+begin
+  /* should print 10 */
+  /* a and b must be live going into this function call! */
+  temp := f2();
+end

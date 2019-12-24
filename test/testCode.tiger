@@ -1,0 +1,18 @@
+main let
+        type ArrayInt = array [100] of int;
+        var X, Y : ArrayInt := 1;
+        var i, a, tmp : int := 0;
+        var sum : float;
+        function simple ( a : int, b: int) : int begin
+            a := b + a;
+            return a ;
+            end;
+in
+begin
+        while i < 10 do /* while loop for dot product */
+                a := simple(X[i], Y[i]);
+                tmp := printf(a);
+                a := a + tmp;
+                i := i + 1;
+        enddo;
+end

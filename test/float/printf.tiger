@@ -1,0 +1,31 @@
+main let
+  var a: int;
+in
+begin
+  a := printf(1.337);   /* should print 1.337 */
+  a := printf(10);      /* should print 10.0 */
+  a := printf(10/3);    /* should print 3.0 */
+  a := printf(10/3.0);  /* should print 3.3333 */
+  a := printf(4 + 0.2); /* should print 4.2 */
+
+  a := printi(1 > 2.0); /* should print 0 (false) */
+  a := printi(1 < 2.0); /* should print 1 (true) */
+  a := printi(2 >= 2.0); /* should print 1 (true) */
+  a := printi(2 <= 2.0); /* should print 1 (true) */
+  a := printi(2 == 2.0); /* should print 1 (true) */
+  a := printi(2 != 2.0); /* should print 0 (false) */
+
+  a := printi(1.0 > 2.0); /* should print 0 (false) */
+  a := printi(1.0 < 2.0); /* should print 1 (true) */
+  a := printi(2.0 >= 2.0); /* should print 1 (true) */
+  a := printi(2.0 <= 2.0); /* should print 1 (true) */
+  a := printi(2.0 == 2.0); /* should print 1 (true) */
+  a := printi(2.0 != 2.0); /* should print 0 (false) */
+
+  a := printi(1.0 > 2); /* should print 0 (false) */
+  a := printi(1.0 < 2); /* should print 1 (true) */
+  a := printi(2.0 >= 2); /* should print 1 (true) */
+  a := printi(2.0 <= 2); /* should print 1 (true) */
+  a := printi(2.0 == 2); /* should print 1 (true) */
+  a := printi(2.0 != 2); /* should print 0 (false) */
+end

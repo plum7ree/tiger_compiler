@@ -1,0 +1,29 @@
+main let
+  var a: int;
+  var f1: float := 69;
+  var f2: float := 1.337;
+
+  function reti(): int
+  begin
+    return 420;
+  end;
+
+  function retf(): float
+  begin
+    return 11037;
+  end;
+
+in
+begin
+  a := printf(f1);       /* should print 69.0 */
+  a := printf(f2);       /* should print 1.337 */
+
+  f1 := 1 + 1;
+  a := printf(f1);       /* should print 2.0 */
+
+  f2 := reti();
+  a := printf(f2);       /* should print 420.0 */
+
+  f2 := retf();
+  a := printf(f2);       /* should print 11037.0 */
+end

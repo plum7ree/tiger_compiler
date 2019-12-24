@@ -1,0 +1,12 @@
+main let
+        var n, res: int;
+        var a,b,c,d :int;
+
+        function func (a: int, b: int) : int begin
+           return a + b;
+        end;
+in
+begin
+    res := func(1 ,2 );
+    res := printf(res);
+end

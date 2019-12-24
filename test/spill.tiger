@@ -1,0 +1,16 @@
+main let
+  var a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t : int := 5;
+  var temp : int;
+
+  function nonlocal(): int
+  begin
+    temp := printi(a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t);
+    return 0;
+  end;
+
+in
+begin
+  /* should print 100 twice */
+  temp := printi(a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t);
+  temp := nonlocal();   /* a-t must be live going into this function call! */
+end

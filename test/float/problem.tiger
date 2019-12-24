@@ -1,0 +1,13 @@
+main let
+    type ArrayInt = array [4] of int;
+    type ArrayFloat = array [4] of float;
+    var I : ArrayInt := 99;
+    var F : ArrayFloat := 424.0;
+    var a : int;
+in
+begin
+    a := printf(I[0]);  /* should print 99.0 */
+    a := printf(F[0]);  /* should print 424.0 */
+
+    F[0] := 2;
+end

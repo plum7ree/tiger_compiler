@@ -1,0 +1,21 @@
+main let
+  var a: int;
+  var b: int;
+  var c: int;
+  var d: int;
+  var e: int;
+
+/* if a's are considered different, one's range should not be passed after the other */
+in
+begin
+  a := 1;
+  if(a > 1) then
+    c := 2;
+    a := a + c;
+  else
+  	b := 1;
+  	a := a + b;
+  endif;
+    d := 3;
+    a := a + d;
+end

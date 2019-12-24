@@ -1,0 +1,42 @@
+apply plugin: 'java'
+apply plugin: 'antlr'
+
+sourceCompatibility = '1.11'
+targetCompatibility = '1.11'
+
+repositories {
+    jcenter()
+}
+
+configurations {
+    include
+}
+
+
+dependencies {
+    antlr "org.antlr:antlr4:4.7.2" // use ANTLR version 4
+    include "org.antlr:antlr4-runtime:4.7.2"
+    implementation 'info.picocli:picocli:4.0.4'
+    include 'info.picocli:picocli:4.0.4'
+    implementation 'org.jgrapht:jgrapht-core:1.3.1'
+    include 'org.jgrapht:jgrapht-core:1.3.1'
+    implementation 'org.jgrapht:jgrapht-io:1.3.1'
+    include 'org.jgrapht:jgrapht-io:1.3.1'
+
+    testImplementation 'junit:junit:4.12'
+}
+
+generateGrammarSource {
+    outputDirectory file("${project.buildDir}/generated-src/antlr/main/org/lulz/tiger/antlr")
+    arguments += ["-package", "org.lulz.tiger.antlr", "-visitor"]
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "org.lulz.tiger.main.Main"
+    }
+
+    from {
+        configurations.include.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

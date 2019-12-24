@@ -1,0 +1,24 @@
+main let
+        var res: int;
+
+        function fibonacci (n: int) : int begin
+            if(n <= 1) then
+                return n;
+            endif;
+
+            let
+                var c: int;
+                var d: int;
+            in
+
+                c := fibonacci(n-1);
+                d := fibonacci(n-2);
+
+                return c + d;
+            end;
+        end;
+in
+begin
+    res := fibonacci(3);
+    res := printi(res);
+end

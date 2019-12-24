@@ -1,0 +1,15 @@
+main let
+        type ArrayFloat = array [100] of float;
+        var X, Y : ArrayFloat := 10;
+        var i, a : int := 0;
+        var sum : float;
+in
+begin
+        while i < 100 do /* while loop for dot product */
+                sum := sum + X[i] * Y [i];
+                a := printi(i);
+                a := printf(X[i]);
+                i := i + 1;
+        enddo;
+        a := printf(sum); /* should print 10000.0 */
+end

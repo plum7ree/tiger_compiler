@@ -1,0 +1,31 @@
+main let
+  var a: int;
+  var b: int;
+  var c: int;
+  var d: int;
+  var e: int;
+  var t: int;
+  var u: int;
+  var v: int;
+
+
+in
+begin
+  a := 1;
+  if(a > 1) then
+    c := 2;
+    t := a;
+
+
+    a := t + c;
+  else
+  	b := 1;
+  	u := a;
+    b := 2;
+    b := 3;
+  	a := u + b;
+  endif;
+    d := 3;
+    v := a;
+    a := v + d;
+end
